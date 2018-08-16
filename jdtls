@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# http://download.eclipse.org/jdtls/snapshots/ Go there and get the jar files
+
 server=/Users/user/Downloads/jdt-language-server-latest
 version=1.5.100.v20180611-1436
 
