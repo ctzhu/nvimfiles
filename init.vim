@@ -32,7 +32,9 @@ vmap <C-x> "+ci
 " nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
 let g:python_host_prog = '/Users/user/conda/envs/py27/bin/python'
 let g:python3_host_prog = '/Users/user/conda/bin/python'
-let g:LanguageClient_serverCommands = {'python': ['/Users/user/conda/bin/pyls']}
+let g:LanguageClient_serverCommands = {'python': ['PATH TO PYLS'],
+			\ 'java': ['PATH TO YOU JDTLS'],
+			\ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']}
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 autocmd BufEnter * call ncm2#enable_for_buffer()
 set completeopt=noinsert,menuone,noselect
