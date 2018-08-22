@@ -24,29 +24,26 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
-" nnoremap <C-v> "+p 
-vmap <C-c> "+yi
-vmap <C-x> "+ci
+if exists("*LanguageClient#textDocument_hover")
+  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+  autocmd BufEnter * call ncm2#enable_for_buffer()
+  set completeopt=noinsert,menuone,noselect
+endif
 
-" autocmd Filetype java setlocal omnifunc=javacomplete#Complete
-" nmap <F4> <Plug>(JavaComplete-Imports-AddSmart)
+let g:pyflakes_use_quickfix = 0
+let g:pyflakes_perfer_python_version = 3
 let g:python_host_prog = '/Users/user/conda/envs/py27/bin/python'
 let g:python3_host_prog = '/Users/user/conda/bin/python'
-let g:LanguageClient_serverCommands = {'python': ['PATH TO PYLS'],
-			\ 'java': ['PATH TO YOU JDTLS'],
+let g:LanguageClient_serverCommands = {'python': ['/opt/conda/bin/pyls'],
+			\ 'java': ['/usr/bin/jdtls'],
 			\ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']}
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
 
 syntax on
 filetype plugin indent on
 filetype plugin on
-let g:pyflakes_use_quickfix = 0
-let g:pyflakes_perfer_python_version = 3
 cd ~
 
-colorschem gruvbox
+:silent! colorscheme gruvbox
 set background=dark
 set number
 set wrap!
@@ -57,12 +54,18 @@ set expandtab
 set softtabstop=4
 set smartindent
 set autoindent
+autocmd FileType java :set fdm=syntax
+autocmd FileType python :set fdm=indent
 
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
   tnoremap <M-[> <Esc>
   tnoremap “ <Esc>
 endif
+
+" nnoremap <C-v> "+p 
+" vmap <C-c> "+yi
+" vmap <C-x> "+ci
 
 " Terminal mode:
 tnoremap ˙ <c-\><c-n><c-w>h
