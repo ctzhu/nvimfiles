@@ -24,11 +24,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
-if exists("*LanguageClient#textDocument_hover")
-  nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-  autocmd BufEnter * call ncm2#enable_for_buffer()
-  set completeopt=noinsert,menuone,noselect
-endif
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+:silent! autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
 
 let g:pyflakes_use_quickfix = 0
 let g:pyflakes_perfer_python_version = 3
