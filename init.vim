@@ -32,8 +32,8 @@ endif
 
 let g:pyflakes_use_quickfix = 0
 let g:pyflakes_perfer_python_version = 3
-let g:python_host_prog = '/Users/user/conda/envs/py27/bin/python'
-let g:python3_host_prog = '/Users/user/conda/bin/python'
+let g:python_host_prog = '/usr/bin/python2'
+let g:python3_host_prog = '/opt/conda/bin/python'
 let g:LanguageClient_serverCommands = {'python': ['/opt/conda/bin/pyls'],
 			\ 'java': ['/usr/bin/jdtls'],
 			\ 'r': ['R', '--quiet', '--slave', '-e', 'languageserver::run()']}
